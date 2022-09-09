@@ -29,8 +29,9 @@ fn parse_expression(lexer: &mut Lexer, min_precedence: u32) -> ParseResult<Expre
         parse_atomic_expression(lexer)?
     };
 
-    // Loop to consume all infix and postfix operators where precedence >= min_precedence.
-    // Otherwise return, to let the operator be consumed higher up in the expression tree.
+    // Now we expand the expression as far as possible to the right by looping
+    // to consume all infix and postfix operators where precedence >= min_precedence.
+    // If an operator has too low precedence, we return to a parent parse_expression call.
     loop {
         if let Ok(op) = InfixOp::try_from(lexer.current()) {
             if op.precedence() < min_precedence { break; }
