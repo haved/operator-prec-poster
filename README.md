@@ -28,4 +28,5 @@ The poster is exclusivly vector graphics. To render the svg properly, you need:
  - Inconsolata for most text
  - Cantarell for footnotes 
  - Hack font for the code
+
 Syntax highlighting is done by hand, but colors are based on "Solarized (light)" from [carbon](carbon.now.sh).
